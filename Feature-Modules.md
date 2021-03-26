@@ -37,7 +37,7 @@ The following table lists all feature modules that are already implemented withi
 
 Name | Type | Input | Description
 --- | --- | --- | ---
-AudioFingerprint | audio | audio sample | The peaks of the power spectrum
+AudioFingerprint | audio | audio frame | The peaks of the power spectrum
 AudioTranscriptionSearch | TODO | TODO | TODO
 AverageColor | global color | average image | Average over all pixels of a shot
 AverageColorArp44 | local color | average image | 4x4 ARP partition-wise average color over all pixels of a shot
@@ -46,29 +46,26 @@ AverageColorCLD | local color | average image | Color layout descriptor of the a
 AverageColorCLDNormalized | local color | average image | Same as AverageColorCLD but the input image gets normalized first
 AverageColorGrid8 | local color | average image | 8x8 grid-wise average color
 AverageColorGrid8Normalized | local color | average image | Same as AverageColorGrid8 but the input image gets normalized first
-AverageColorGrid8Reduced11 | TODO | TODO | TODO
-AverageColorGrid8Reduced15 | TODO | TODO | TODO
+AverageColorGrid8Reduced11 | local color | average image | Same as AverageColorGrid8 but the input image gets reduced into 11 colors first 
+AverageColorGrid8Reduced15 | local color | average image | Same as AverageColorGrid8 but the input image gets reduced into 15 colors first 
 AverageColorRaster | local color | average image | 8x8 color-quantized image, registration is used as similarity measure
-AverageColorRasterReduced11 | TODO | TODO | TODO
-AverageColorRasterReduced15 | TODO | TODO | TODO
+AverageColorRasterReduced11 | local color | average image | Same as AverageColorRaster but the input image gets reduced into 11 colors first 
+AverageColorRasterReduced15 | local color | average image | Same as AverageColorRaster but the input image gets reduced into 11 colors first 
 AverageFuzzyHist | global color | average image | 15-bin fuzzy color histogram
 AverageFuzzyHistNormalized | global color | average image | Same as AverageFuzzyHist but the input image gets normalized first
 AverageHPCP20F36B | TODO | TODO | TODO
 AverageHPCP30F36B | TODO | TODO | TODO
-CENS | audio | audio sample | Chroma-based feature encoding approach to show a higher robustness towards variations in tempo
-CENS12BasslineShingle | audio | audio sample | CENS focusing on frequencies between 10Hz and 262Hz
-CENS12MelodyShingle | audio | audio sample | CENS focusing on frequencies between 262Hz and 5kHz
-CENS12Shingle | audio | audio sample | CENS focusing on frequencies between 50Hz and 5kHz
+CENS | audio | audio frame | Chroma-based feature encoding approach to show a higher robustness towards variations in tempo
+CENS12BasslineShingle | audio | audio frame | CENS focusing on frequencies between 10Hz and 262Hz
+CENS12MelodyShingle | audio | audio frame | CENS focusing on frequencies between 262Hz and 5kHz
+CENS12Shingle | audio | audio frame | CENS focusing on frequencies between 50Hz and 5kHz
 ChromaGrid8 | local color | most representative frame | 8x8 Grid of average chroma values
 CLD | local color | most representative frame | Color Layout descriptor
 CLDNormalized | local color | most representative frame | Same as CLD but the input image gets normalized first
-CLDReduced11 | TODO | TODO | TODO
-CLDReduced15 | TODO | TODO | TODO
+CLDReduced11 | local color | most representative frame | Same as CLD but the input image gets reduced into 11 colors first 
+CLDReduced15 | local color | most representative frame | Same as CLD but the input image gets reduced into 15 colors first 
 ConceptMasks | TODO | TODO | TODO
 ConceptMasksAde20k | TODO | TODO | TODO
-**REMOVED** Contrast | global color | most representative frame | Contrast value of the frame
-DailyCollectionBooleanRetriever | TODO | TODO | TODO
-DailyRangeBooleanRetriever | TODO | TODO | TODO
 DCTImageHash | local color | most representative frame | A hashing scheme using discrete cosine transform (DCT)
 DescriptionTextSearch | TODO | TODO | TODO
 DominantColors | global color | most representative frame | Three most dominant colors as determined by k-means clustering
@@ -83,14 +80,15 @@ ForegroundBoundingBox | TODO | TODO | TODO
 HOG | global color | most representative frame | Histogram of Oriented Gradients
 HOGMirflickr25K256 | global color | most representative frame | HOG using a codebook of size 256 generated from the MIRFLICKR-25000 image collection
 HOGMirflickr25K512 | global color | most representative frame | HOG using a codebook of size 512 generated from the MIRFLICKR-25000 image collection
-HPCP | audio | audio sample | Harmonic Pitch Class Profiles
-HPCP12BasslineShingle | audio | audio sample | HPCP focusing on frequencies between 10Hz and 262Hz
-HPCP12MelodyShingle | audio | audio sample | HPCP focusing on frequencies between 262Hz and 5kHz
-HPCP12Shingle | audio | audio sample | HPCP focusing on frequencies between 50Hz and 5kHz
+HPCP | audio | audio frame | Harmonic Pitch Class Profiles
+HPCP12BasslineShingle | audio | audio frame | HPCP focusing on frequencies between 10Hz and 262Hz
+HPCP12MelodyShingle | audio | audio frame | HPCP focusing on frequencies between 262Hz and 5kHz
+HPCP12Shingle | audio | audio frame | HPCP focusing on frequencies between 50Hz and 5kHz
 HueHistogram | global color | most representative frame | 16-bin hue histogram
 HueValueVarianceGrid8 | local color | frame list | 8x8 grid partitioned average and variance of hue and value of a shot
-LightfieldFourier | TODO | TODO | TODO
-LightfieldZernike | TODO | TODO | TODO
+Lightfield | 3D model | mesh | Feature of 10 images rendered from vertices of dodecahedron over a hemisphere 
+LightfieldFourier | 3D model | mesh | a region shape descriptor 
+LightfieldZernike | 3D model | mesh | a contour shape descriptor 
 MedianColor | global color | median image | median color of a shot
 MedianColorArp44 | local color | median image | 4x4 arp partitioned median color
 MedianColorARP44Normalized | local color | median image | Same as MedianColorARP44Normalized but the input image gets normalized first
@@ -100,12 +98,10 @@ MedianColorRaster | local color | median image | 8x8 color-quantised image, regi
 MedianFuzzyHist | local color | median image | 15-bin fuzzy color histogram
 MedianFuzzyHistNormalized | local color | median image | Same as MedianFuzzyHistbut the input image gets normalized first
 MelodyEstimate | TODO | TODO | TODO
-MFCCShingle | TODO | TODO | TODO
+MFCCShingle | audio | audio frame | Mel Frequency Cepstral Co-efficients 
 MotionHistogram | motion | motion paths | 8-bin normalized motion histogram
 MotionHistogramBackground | TODO | TODO | TODO
 ObjectInstances | TODO | TODO | TODO
-OCRSearch | TODO | TODO | TODO
-RangeBooleanRetriever | TODO | TODO | TODO
 SaturationGrid8 | local color | most representative frame | 8x8 grid-partitioned saturation value
 SegmentTags | TODO | TODO | TODO
 ShapeCentroidDistance | TODO | TODO | TODO
