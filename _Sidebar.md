@@ -8,10 +8,12 @@
   * [[Extracting Features]]
   * [[Extraction Configuration]]
   * [[Feature Modules]]
+  * [[Implementing New Features]]
 * Advanced
   * [[Extraction to File and Import]]
 * API Documentation
   * [[Websocket API]]
+    * [[WS API Temporal Query]]
     * [[WS API Similarity Query]]
     * [[WS API More Like This Query]]
     * [[WS API Neighboring Segment Query]]
